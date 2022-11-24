@@ -4,7 +4,9 @@ import 'package:nlwt/shared/themes/app_text_style.dart';
 class LabelButton extends StatelessWidget {
   final String label;
   final VoidCallback onPressed;
-  const LabelButton({super.key, required this.label, required this.onPressed});
+  final TextStyle? style;
+  const LabelButton(
+      {super.key, required this.label, required this.onPressed, this.style});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class LabelButton extends StatelessWidget {
           onPressed: () {},
           child: Text(
             label,
-            style: TextStyles.buttonHeading,
+            style: style ?? TextStyles.buttonHeading,
           )),
     );
   }
