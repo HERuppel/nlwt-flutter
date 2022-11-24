@@ -13,22 +13,32 @@ class BarcodeScannerPage extends StatefulWidget {
 class _BarcodeScannerState extends State<BarcodeScannerPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-            leading: BackButton(color: AppColors.background),
-            backgroundColor: Colors.black,
-            title: Text("Escaneie o código de barras do boleto",
-                style: TextStyles.buttonBackground)),
-        body: Column(children: [
-          Expanded(child: Container(color: Colors.black)),
-          Expanded(flex: 2, child: Container(color: Colors.transparent)),
-          Expanded(child: Container(color: Colors.black)),
-        ]),
-        bottomNavigationBar: SetLabelButtons(
-          primaryLabel: "Inserir código do boleto",
-          primaryOnPressed: () {},
-          secondaryLabel: "Adicionar da galeria",
-          secondaryOnPressed: () {},
-        ));
+    return SafeArea(
+      top: true,
+      bottom: true,
+      left: true,
+      right: true,
+      child: RotatedBox(
+        quarterTurns: 1,
+        child: Scaffold(
+            appBar: AppBar(
+                centerTitle: true,
+                leading: BackButton(color: AppColors.background),
+                backgroundColor: Colors.black,
+                title: Text("Escaneie o código de barras do boleto",
+                    style: TextStyles.buttonBackground)),
+            body: Column(children: [
+              Expanded(child: Container(color: Colors.black.withOpacity(0.9))),
+              Expanded(flex: 2, child: Container(color: Colors.transparent)),
+              Expanded(child: Container(color: Colors.black.withOpacity(0.9))),
+            ]),
+            bottomNavigationBar: SetLabelButtons(
+              primaryLabel: "Inserir código do boleto",
+              primaryOnPressed: () {},
+              secondaryLabel: "Adicionar da galeria",
+              secondaryOnPressed: () {},
+            )),
+      ),
+    );
   }
 }
