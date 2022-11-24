@@ -32,7 +32,7 @@ class _AppFireBaseState extends State<AppFireBase> {
           }
 
           if (snapshot.connectionState == ConnectionState.done) {
-            return const AppWidget();
+            return AppWidget();
           }
           return const Material(
             child: Center(child: CircularProgressIndicator()),

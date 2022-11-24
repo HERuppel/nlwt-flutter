@@ -22,6 +22,8 @@ class BarcodeScannerController {
       final cameraController =
           CameraController(camera, ResolutionPreset.max, enableAudio: false);
 
+      await cameraController.initialize();
+
       status = BarcodeScannerStatus.available(cameraController);
       scanWithCamera();
     } catch (e) {
