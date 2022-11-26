@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nlwt/shared/themes/app_colors.dart';
+import 'package:nlwt/shared/themes/app_text_style.dart';
 
 class InsertBillPage extends StatelessWidget {
   const InsertBillPage({super.key});
@@ -6,7 +8,24 @@ class InsertBillPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("olalala")),
-    );
+        backgroundColor: AppColors.background,
+        appBar: AppBar(
+          backgroundColor: AppColors.background,
+          elevation: 0,
+          leading: BackButton(color: AppColors.input),
+        ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 93, vertical: 24),
+              child: Text(
+                "Preencha os dados do boleto",
+                style: TextStyles.titleBoldHeading,
+                textAlign: TextAlign.center,
+              ),
+            )
+          ],
+        ));
   }
 }
