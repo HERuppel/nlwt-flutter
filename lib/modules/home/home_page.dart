@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nlwt/modules/home/home_controller.dart';
+import 'package:nlwt/modules/my_bills/my_bills_page.dart';
 import 'package:nlwt/shared/models/bill_model.dart';
 import 'package:nlwt/shared/themes/app_colors.dart';
 import 'package:nlwt/shared/themes/app_text_style.dart';
@@ -15,10 +16,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
-  final pages = [
-    Container(color: AppColors.background, child: const BillList()),
-    Container(color: Colors.blue)
-  ];
+  final pages = [const MyBillsPage(), Container(color: Colors.blue)];
 
   @override
   Widget build(BuildContext context) {
