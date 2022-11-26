@@ -1,3 +1,4 @@
+import 'package:animated_card/animated_card.dart';
 import 'package:flutter/material.dart';
 import 'package:nlwt/shared/models/bill_model.dart';
 import 'package:nlwt/shared/themes/app_colors.dart';
@@ -32,7 +33,9 @@ class _MyBillsPageState extends State<MyBillsPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 child: ValueListenableBuilder<List<BillModel>>(
                     valueListenable: controller.billsNotifier,
-                    builder: (_, bills, __) => BillInfo(size: bills.length)),
+                    builder: (_, bills, __) => AnimatedCard(
+                        direction: AnimatedCardDirection.top,
+                        child: BillInfo(size: bills.length))),
               ),
             ],
           ),
