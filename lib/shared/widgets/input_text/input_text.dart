@@ -5,18 +5,19 @@ import 'package:nlwt/shared/themes/app_text_style.dart';
 class InputText extends StatelessWidget {
   final String label;
   final IconData icon;
-  final String? initialValue;
+  final String? initalValue;
   final String? Function(String?)? validator;
   final TextEditingController? controller;
   final void Function(String value) onChanged;
   const InputText(
-      {super.key,
+      {Key? key,
       required this.label,
       required this.icon,
-      this.initialValue,
+      required this.onChanged,
+      this.initalValue,
       this.validator,
-      this.controller,
-      required this.onChanged});
+      this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,28 +26,39 @@ class InputText extends StatelessWidget {
       child: Column(
         children: [
           TextFormField(
-            initialValue: initialValue,
+            controller: controller,
+            initialValue: initalValue,
             validator: validator,
             onChanged: onChanged,
             style: TextStyles.input,
             decoration: InputDecoration(
-              contentPadding: EdgeInsets.zero,
-              labelText: label,
-              labelStyle: TextStyles.input,
-              icon: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 18),
-                    child: Icon(icon, color: AppColors.primary),
-                  ),
-                  Container(width: 1, height: 48, color: AppColors.stroke)
-                ],
-              ),
-              border: InputBorder.none,
-            ),
+                contentPadding: EdgeInsets.zero,
+                labelText: label,
+                labelStyle: TextStyles.input,
+                icon: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 18),
+                      child: Icon(
+                        icon,
+                        color: AppColors.primary,
+                      ),
+                    ),
+                    Container(
+                      width: 1,
+                      height: 48,
+                      color: AppColors.stroke,
+                    )
+                  ],
+                ),
+                border: InputBorder.none),
           ),
-          Divider(height: 1, thickness: 1, color: AppColors.stroke)
+          Divider(
+            height: 1,
+            thickness: 1,
+            color: AppColors.stroke,
+          )
         ],
       ),
     );
