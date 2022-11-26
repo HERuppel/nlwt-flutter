@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:nlwt/modules/extract/extract_page.dart';
 import 'package:nlwt/modules/home/home_controller.dart';
 import 'package:nlwt/modules/my_bills/my_bills_page.dart';
-import 'package:nlwt/shared/models/bill_model.dart';
 import 'package:nlwt/shared/themes/app_colors.dart';
 import 'package:nlwt/shared/themes/app_text_style.dart';
-import 'package:nlwt/shared/widgets/bill_list/bill_list.dart';
-import 'package:nlwt/shared/widgets/bill_tile/bill_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,7 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
-  final pages = [const MyBillsPage(), Container(color: Colors.blue)];
+  final pages = [const MyBillsPage(), const ExtractPage()];
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +62,9 @@ class _HomePageState extends State<HomePage> {
                   },
                   icon: Icon(
                     Icons.home,
-                    color: AppColors.primary,
+                    color: homeController.currentPage == 0
+                        ? AppColors.primary
+                        : AppColors.body,
                   )),
               GestureDetector(
                 onTap: () {
@@ -85,8 +85,10 @@ class _HomePageState extends State<HomePage> {
                     homeController.setPage(1);
                     setState(() {});
                   },
-                  icon:
-                      Icon(Icons.description_outlined, color: AppColors.body)),
+                  icon: Icon(Icons.description_outlined,
+                      color: homeController.currentPage == 1
+                          ? AppColors.primary
+                          : AppColors.body)),
             ],
           )),
     );
