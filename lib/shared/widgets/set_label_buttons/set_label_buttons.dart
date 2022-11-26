@@ -24,32 +24,22 @@ class SetLabelButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.shape,
-      height: 57,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
+      height: 56,
+      child: Row(
         children: [
-          Divider(height: 1, thickness: 1, color: AppColors.stroke),
-          SizedBox(
-            height: 56,
-            child: Row(
-              children: [
-                Expanded(
-                  child: LabelButton(
-                    label: primaryLabel,
-                    onPressed: primaryOnPressed,
-                    style: enablePrimaryColor ? TextStyles.buttonPrimary : null,
-                  ),
-                ),
-                const VerticalDivider(),
-                Expanded(
-                  child: LabelButton(
-                    label: secondaryLabel,
-                    onPressed: secondaryOnPressed,
-                    style:
-                        enableSecondaryColor ? TextStyles.buttonPrimary : null,
-                  ),
-                ),
-              ],
+          Expanded(
+            child: LabelButton(
+              label: primaryLabel,
+              onPressed: primaryOnPressed,
+              style: enablePrimaryColor ? TextStyles.buttonPrimary : null,
+            ),
+          ),
+          const VerticalDivider(),
+          Expanded(
+            child: LabelButton(
+              label: secondaryLabel,
+              onPressed: secondaryOnPressed,
+              style: enableSecondaryColor ? TextStyles.buttonPrimary : null,
             ),
           ),
         ],

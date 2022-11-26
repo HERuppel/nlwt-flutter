@@ -100,17 +100,27 @@ class _InsertBillPageState extends State<InsertBillPage> {
           ),
         ),
       ),
-      bottomNavigationBar: SetLabelButtons(
-        primaryLabel: "Cancelar",
-        primaryOnPressed: () {
-          Navigator.pop(context);
-        },
-        secondaryLabel: "Cadastrar",
-        secondaryOnPressed: () async {
-          await controller.createBill();
-          Navigator.pop(context);
-        },
-        enableSecondaryColor: true,
+      bottomNavigationBar: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Divider(
+            height: 1,
+            thickness: 1,
+            color: AppColors.stroke,
+          ),
+          SetLabelButtons(
+            primaryLabel: "Cancelar",
+            primaryOnPressed: () {
+              Navigator.pop(context);
+            },
+            secondaryLabel: "Cadastrar",
+            secondaryOnPressed: () async {
+              await controller.createBill();
+              Navigator.pop(context);
+            },
+            enableSecondaryColor: true,
+          ),
+        ],
       ),
     );
   }
