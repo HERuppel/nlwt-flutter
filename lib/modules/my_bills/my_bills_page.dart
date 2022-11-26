@@ -18,49 +18,51 @@ class _MyBillsPageState extends State<MyBillsPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Stack(
-          children: [
-            Container(
-              color: AppColors.primary,
-              height: 40,
-              width: double.maxFinite,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              child: ValueListenableBuilder<List<BillModel>>(
-                  valueListenable: controller.billsNotifier,
-                  builder: (_, bills, __) => BillInfo(size: bills.length)),
-            ),
-          ],
-        ),
-        Padding(
-          padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
-          child: Row(
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Stack(
             children: [
-              Text(
-                "Meus Boletos",
-                style: TextStyles.titleBoldHeading,
+              Container(
+                color: AppColors.primary,
+                height: 40,
+                width: double.maxFinite,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                child: ValueListenableBuilder<List<BillModel>>(
+                    valueListenable: controller.billsNotifier,
+                    builder: (_, bills, __) => BillInfo(size: bills.length)),
               ),
             ],
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
-          child: Divider(
-            color: AppColors.stroke,
-            height: 1,
-            thickness: 1,
+          Padding(
+            padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
+            child: Row(
+              children: [
+                Text(
+                  "Meus Boletos",
+                  style: TextStyles.titleBoldHeading,
+                ),
+              ],
+            ),
           ),
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
-          child: BillList(
-            controller: controller,
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 24),
+            child: Divider(
+              color: AppColors.stroke,
+              height: 1,
+              thickness: 1,
+            ),
           ),
-        )
-      ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24),
+            child: BillList(
+              controller: controller,
+            ),
+          )
+        ],
+      ),
     );
   }
 }
