@@ -3,6 +3,7 @@ import 'package:nlwt/modules/home/home_controller.dart';
 import 'package:nlwt/shared/models/bill_model.dart';
 import 'package:nlwt/shared/themes/app_colors.dart';
 import 'package:nlwt/shared/themes/app_text_style.dart';
+import 'package:nlwt/shared/widgets/bill_list/bill_list.dart';
 import 'package:nlwt/shared/widgets/bill_tile/bill_tile.dart';
 
 class HomePage extends StatefulWidget {
@@ -15,15 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
   final pages = [
-    Container(
-      color: AppColors.background,
-      child: BillTile(
-          data: BillModel(
-              name: "Água",
-              dueDate: "23/12/2022",
-              value: 100,
-              barcode: "1232143534545")),
-    ),
+    Container(color: AppColors.background, child: const BillList()),
     Container(color: Colors.blue)
   ];
 
