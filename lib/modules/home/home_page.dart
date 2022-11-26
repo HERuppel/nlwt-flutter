@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:nlwt/modules/extract/extract_page.dart';
 import 'package:nlwt/modules/home/home_controller.dart';
 import 'package:nlwt/modules/my_bills/my_bills_page.dart';
+import 'package:nlwt/shared/models/user_model.dart';
 import 'package:nlwt/shared/themes/app_colors.dart';
 import 'package:nlwt/shared/themes/app_text_style.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  final UserModel user;
+  const HomePage({Key? key, required this.user}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -32,7 +34,7 @@ class _HomePageState extends State<HomePage> {
                       style: TextStyles.titleRegular,
                       children: [
                         TextSpan(
-                            text: "Renato",
+                            text: widget.user.name,
                             style: TextStyles.titleBoldBackground)
                       ]),
                   style: TextStyles.titleRegular),
@@ -43,7 +45,9 @@ class _HomePageState extends State<HomePage> {
                 width: 48,
                 decoration: BoxDecoration(
                     color: Colors.black,
-                    borderRadius: BorderRadius.circular(5)),
+                    borderRadius: BorderRadius.circular(5),
+                    image: DecorationImage(
+                        image: NetworkImage(widget.user.photoURL))),
               ),
             ),
           ),
@@ -68,8 +72,7 @@ class _HomePageState extends State<HomePage> {
                   )),
               GestureDetector(
                 onTap: () {
-                  //Navigator.pushNamed(context, "/barcode_scanner");
-                  Navigator.pushNamed(context, "/insert_bill");
+                  Navigator.pushNamed(context, "/barcode_scanner");
                 },
                 child: Container(
                     height: 56,
