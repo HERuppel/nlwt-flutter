@@ -3,7 +3,6 @@ import 'package:nlwt/modules/barcode_scanner/barcode_scanner_controller.dart';
 import 'package:nlwt/modules/barcode_scanner/barcode_scanner_status.dart';
 import 'package:nlwt/shared/themes/app_colors.dart';
 import 'package:nlwt/shared/widgets/bottom_sheet/bottom_sheet_widget.dart';
-
 import '../../shared/themes/app_text_style.dart';
 import '../../shared/widgets/set_label_buttons/set_label_buttons.dart';
 
@@ -22,7 +21,7 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
     controller.getAvailableCameras();
     controller.statusNotifier.addListener(() {
       if (controller.status.hasBarcode) {
-        Navigator.pushReplacementNamed(context, "/insert_boleto",
+        Navigator.pushReplacementNamed(context, "/insert_bill",
             arguments: controller.status.barcode);
       }
     });
@@ -114,9 +113,10 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                           },
                           secondaryLabel: "Digitar código",
                           secondaryOnPressed: () {},
-                          title: "Não consegui identificar o código de barras.",
+                          title:
+                              "Não foi possível identificar um código de barras.",
                           subTitle:
-                              "Tente novamente ou digite o código do boleto."));
+                              "Tente escanear novamente ou digite o código do seu boleto."));
                 } else {
                   return Container();
                 }
