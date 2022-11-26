@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nlwt/modules/home/home_controller.dart';
+import 'package:nlwt/shared/models/bill_model.dart';
 import 'package:nlwt/shared/themes/app_colors.dart';
 import 'package:nlwt/shared/themes/app_text_style.dart';
+import 'package:nlwt/shared/widgets/bill_tile/bill_tile.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -12,7 +14,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final homeController = HomeController();
-  final pages = [Container(color: Colors.red), Container(color: Colors.blue)];
+  final pages = [
+    Container(
+      color: AppColors.background,
+      child: BillTile(
+          data: BillModel(
+              name: "Água",
+              dueDate: "23/12/2022",
+              value: 100,
+              barcode: "1232143534545")),
+    ),
+    Container(color: Colors.blue)
+  ];
 
   @override
   Widget build(BuildContext context) {
